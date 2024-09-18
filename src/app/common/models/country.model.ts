@@ -10,3 +10,15 @@ export interface CountryInfo {
   region: string,
   borders: CountryInfo | null;
 }
+
+export interface Holiday {
+  date: Date,
+  localName: string,
+  name: string,
+  countryCode: string,
+  fixed?: boolean,
+  global?: boolean,
+  types?: [
+    "Public"
+  ]
+} 
