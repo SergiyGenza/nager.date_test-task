@@ -1,0 +1,11 @@
+<div class="">
+  <button mat-stroked-button (click)="decrementYear()">Previous Year</button>
+  <h3>Current Year: {{ year$ | async }}</h3>
+  <button mat-stroked-button (click)="incrementYear()">Next Year</button>
+</div>
+
+@for(h of holidays | async; track h.date){
+<div>
+  <p>{{ h.name }} - {{ h.date }} - {{h.types}}</p>
+</div>
+}

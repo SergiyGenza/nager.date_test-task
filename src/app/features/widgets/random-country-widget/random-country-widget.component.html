@@ -1,0 +1,8 @@
+<h5>Random Countries Holiday Widget!</h5>
+<mat-tab-group>
+  @for(countryInfo of countriesInfoList$ | async; track countryInfo.country.name){
+  <mat-tab [label]="countryInfo.country.name">
+    <app-holidays-list [holidays]="countryInfo.holidays"></app-holidays-list>
+  </mat-tab>
+  }
+</mat-tab-group>
