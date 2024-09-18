@@ -18,7 +18,6 @@ export interface Holiday {
   countryCode: string,
   fixed?: boolean,
   global?: boolean,
-  types?: [
-    "Public"
+  types?: string[
   ]
 } 
