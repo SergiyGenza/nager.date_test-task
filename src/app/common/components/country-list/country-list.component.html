@@ -1,0 +1,6 @@
+@for(country of countryList | async | search: searchItem ; track country.name){
+<div class="item">
+  <app-country-name [country]="country"></app-country-name>
+  (<span>{{country.countryCode}}</span>)
+</div>
+}
