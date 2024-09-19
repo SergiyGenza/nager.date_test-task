@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { CountryComponent } from './pages/country/country.component';
 
 export const routes: Routes = [
-  { path: '', title: 'home', component: HomeComponent },
-  { path: 'country/:id', title: 'country', component: CountryComponent },
+  { path: '', title: 'home', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) },
+  { path: 'country/:id', title: 'country', loadComponent: () => import('./pages/country/country.component').then(m => m.CountryComponent) },
   { path: '**', redirectTo: '' },
 ];

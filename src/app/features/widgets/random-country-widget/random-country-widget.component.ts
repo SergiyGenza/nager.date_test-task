@@ -6,12 +6,13 @@ import { AsyncPipe } from '@angular/common';
 import { HolidaysListComponent } from './holidays-list/holidays-list.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CountryNameComponent } from '../../../shared/country-name/country-name.component';
+import { CardComponent } from '../../../shared/card/card.component';
 
 
 @Component({
   selector: 'app-random-country-widget',
   standalone: true,
-  imports: [AsyncPipe, HolidaysListComponent, MatTabsModule, CountryNameComponent],
+  imports: [AsyncPipe, HolidaysListComponent, MatTabsModule, CountryNameComponent, CardComponent],
   providers: [NagerDateService],
   templateUrl: './random-country-widget.component.html',
   styleUrl: './random-country-widget.component.scss',
