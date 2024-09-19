@@ -20,7 +20,6 @@ export class CountryComponent implements OnInit {
   private nagerDateService = inject(NagerDateService);
   year$ = new BehaviorSubject<number>(new Date().getFullYear());
   holidays$!: Observable<Holiday[]>;
-
   years = Array.from({ length: 11 }, (_, i) => 2020 + i);
 
   ngOnInit(): void {

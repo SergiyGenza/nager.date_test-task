@@ -10,5 +10,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './country-name.component.scss'
 })
 export class CountryNameComponent {
-  @Input() country!: Country;
+  @Input()
+  country!: Country;
 }

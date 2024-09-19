@@ -15,6 +15,8 @@ import { CardComponent } from '../../../shared/card/card.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CountryListComponent {
-  @Input() countryList!: Observable<Country[]>;
-  @Input() searchItem: string | undefined;
+  @Input()
+  countryList!: Observable<Country[]>;
+  @Input()
+  searchItem: string | undefined;
 }

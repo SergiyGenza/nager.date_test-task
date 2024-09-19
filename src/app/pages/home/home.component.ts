@@ -20,16 +20,14 @@ export class HomeComponent implements OnInit {
 
   searchCountry!: string;
   countryList!: Observable<Country[]>;
-  randomCountryList!: Observable<Country[]>;
 
-  constructor() {
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.countryList = this.nagerDateService.getAllCountries();
   }
 
-  checkValue(value: string): void {
+  public checkValue(value: string): void {
     this.searchCountry = value;
   }
 

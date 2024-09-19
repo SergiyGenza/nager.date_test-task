@@ -2,6 +2,7 @@
 <mat-tab-group>
   @for(countryInfo of countriesInfoList$ | async; track countryInfo.country.name){
   <mat-tab [label]="countryInfo.country.name">
+    <app-country-name [country]="countryInfo.country"></app-country-name>
     <app-holidays-list [holidays]="countryInfo.holidays"></app-holidays-list>
   </mat-tab>
   }

@@ -1,9 +1,8 @@
 <div class="list-container">
-  @for(country of countryList | async | search: searchItem ; track country.name){
+  @for(country of countryList | async | search: searchItem; track country.countryCode){
   <app-card>
     <app-country-name [country]="country"></app-country-name>
     (<span>{{country.countryCode}}</span>)
   </app-card>
-
   }
 </div>
