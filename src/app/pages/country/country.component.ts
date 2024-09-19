@@ -1,60 +1,39 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { NagerDateService } from '../../common/services/nager-date.service';
 import { AsyncPipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { CardComponent } from '../../shared/card/card.component';
+import { Holiday } from '../../common/models/country.model';
 
 @Component({
   selector: 'app-country',
   standalone: true,
-  imports: [AsyncPipe, MatButtonModule],
+  imports: [AsyncPipe, MatButtonModule, CardComponent],
   providers: [NagerDateService],
   templateUrl: './country.component.html',
-  styleUrl: './country.component.scss'
+  styleUrl: './country.component.scss',
 })
 export class CountryComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private nagerDateService = inject(NagerDateService);
-  private currentYear: number;
-
   year$ = new BehaviorSubject<number>(new Date().getFullYear());
-  holidays!: Observable<any>;
+  holidays$!: Observable<Holiday[]>;
 
-  constructor() {
-    this.currentYear = this.year$.getValue();
-  }
+  years = Array.from({ length: 11 }, (_, i) => 2020 + i);
 
   ngOnInit(): void {
-    this.setHolidays();
-    this.holidays.subscribe((s) => console.log(s)
-    )
-  }
-
-  public incrementYear(): void {
-    if (this.currentYear < 2030) {
-      this.currentYear++;
-      this.year$.next(this.currentYear);
-      this.setHolidays();
-    }
-  }
-
-  public decrementYear(): void {
-    if (this.currentYear > 2020) {
-      this.currentYear--;
-      this.year$.next(this.currentYear);
-      this.setHolidays();
-    }
-  }
-
-  private setHolidays() {
-    this.holidays = this.route.paramMap.pipe(
-      switchMap(params => {
-        return this.nagerDateService.getPublicHolidaysByYear(this.currentYear, params.get('id')!);
+    this.holidays$ = this.year$.pipe(
+      switchMap(year => {
+        const id = this.route.snapshot.paramMap.get('id')!;
+        return this.nagerDateService.getPublicHolidaysByYear(year, id);
       })
     );
-
   }
 
+  public setYear(year: number): void {
+    this.year$.next(year);
+  }
 
 }

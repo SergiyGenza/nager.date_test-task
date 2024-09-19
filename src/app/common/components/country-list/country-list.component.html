@@ -1,6 +1,9 @@
-@for(country of countryList | async | search: searchItem ; track country.name){
-<div class="item">
-  <app-country-name [country]="country"></app-country-name>
-  (<span>{{country.countryCode}}</span>)
+<div class="list-container">
+  @for(country of countryList | async | search: searchItem ; track country.name){
+  <app-card>
+    <app-country-name [country]="country"></app-country-name>
+    (<span>{{country.countryCode}}</span>)
+  </app-card>
+
+  }
 </div>
-}
